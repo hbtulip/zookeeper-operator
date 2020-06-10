@@ -1,0 +1,7 @@
+apiVersion: zkop.hmxq.top/v1
+kind: Zookeepercluster
+metadata:
+  name: zookeepercluster-sample
+spec:
+  # Add fields here
+  foo: bar
