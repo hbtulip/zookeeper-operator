@@ -24,23 +24,27 @@ func TestZKClient(t *testing.T) {
 	zkclient := new(MyZookeeperClient)
 	err = zkclient.Connect("127.0.0.0:2181")
 	if err != nil {
-		t.Logf(err.Error())
-		t.FailNow()
+		//t.Logf(err.Error())
+		//t.FailNow()
+		t.Fatalf(err.Error())
 	}
 
 	err = zkclient.CreateNode(z, "temp1/tmp2/tmp3")
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Logf(err.Error())
+		t.Fail()
 	}
 
 	err = zkclient.UpdateNode("temp1/tmp2/temp3", "disp", 100)
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Logf(err.Error())
+		t.Fail()
 	}
 
 	_, err = zkclient.NodeExists("temp1")
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Logf(err.Error())
+		t.Fail()
 	}
 
 	zkclient.Close()
