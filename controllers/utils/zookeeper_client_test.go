@@ -24,8 +24,8 @@ func TestZKClient(t *testing.T) {
 	zkclient := new(MyZookeeperClient)
 	err = zkclient.Connect("127.0.0.0:2181")
 	if err != nil {
-		t.Errorf(err.Error())
-		t.Fail()
+		t.Logf(err.Error())
+		t.FailNow()
 	}
 
 	err = zkclient.CreateNode(z, "temp1/tmp2/tmp3")
